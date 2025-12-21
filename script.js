@@ -1,7 +1,7 @@
 // Cœurs flottants
 const createHearts = () => {
   const container = document.getElementById("heartsContainer");
-  const heartCount = 30;
+  const heartCount = 25;
 
   for (let i = 0; i < heartCount; i++) {
     const heart = document.createElement("div");
@@ -128,9 +128,9 @@ const setupMusic = () => {
 
 // Musique de fond douce
 const setupBackgroundMusic = () => {
-  const bgAudio = new Audio("https://assets.mixkit.co/music/preview/mixkit-christmas-magic-577.mp3");
+  const bgAudio = new Audio("./background-music.mp3");
   bgAudio.loop = true;
-  bgAudio.volume = 0.3; // Volume réduit pour l'ambiance
+  bgAudio.volume = 0.1; // Volume réduit pour l'ambiance
   
   // Démarrer la musique automatiquement
   bgAudio.play().catch(error => {
@@ -167,7 +167,7 @@ const createRomanticSnow = () => {
   const container = document.getElementById("heartsContainer");
 
   setInterval(() => {
-    if (Math.random() > 0.3) {
+    if (Math.random() > 0.7) {
       const snowflake = document.createElement("div");
       snowflake.innerHTML = "❄";
       snowflake.style.position = "fixed";
