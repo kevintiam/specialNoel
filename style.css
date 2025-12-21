@@ -1,0 +1,528 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Charmonman:wght@400;700&family=Coming+Soon&family=Elsie+Swash+Caps:wght@400;900&family=Epunda+Sans:ital,wght@0,300..900;1,300..900&family=Indie+Flower&family=League+Spartan:wght@100..900&family=Merienda:wght@300..900&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Playpen+Sans:wght@100..800&family=Quintessential&family=Shantell+Sans:ital,wght@0,300..800;1,300..800&family=Sofia&family=Space+Mono:wght@700&family=Tangerine:wght@400;700&family=Ysabeau+Infant:ital,wght@0,1..1000;1,1..1000&display=swap');
+
+:root {
+  --deep-red: #8b0000;
+  --romantic-red: #b22222;
+  --soft-pink: #ffb6c1;
+  --gold: #d4af37;
+  --light-gold: #f4e4a6;
+  --ivory: #fffff0;
+  --dark-burgundy: #4a0008;
+  --soft-white: #faf9f6;
+  --transparent-white: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #1a0f0f, var(--dark-burgundy), #2c0f1a);
+  color: var(--ivory);
+  font-family: "Ysabeau Infant", sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  background-attachment: fixed;
+}
+
+/* Cœurs flottants */
+.hearts-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.heart {
+  position: absolute;
+  color: var(--soft-pink);
+  opacity: 0;
+  font-size: 1.5rem;
+  animation: floatHeart linear infinite;
+}
+
+@keyframes floatHeart {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Effet de lumière douce */
+.soft-glow {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vmin;
+  height: 80vmin;
+  background: radial-gradient(
+    circle,
+    rgba(255, 182, 193, 0.15),
+    transparent 70%
+  );
+  border-radius: 50%;
+  z-index: 0;
+  filter: blur(50px);
+  animation: pulseGlow 8s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% {
+    opacity: 0.2;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  100% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* En-tête romantique */
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  position: relative;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(139, 0, 0, 0.1),
+    transparent
+  );
+  border-radius: 20px;
+  z-index: -1;
+}
+
+.title {
+  font-family: "Dancing Script", cursive;
+  font-size: 5rem;
+  color: var(--soft-pink);
+  margin-bottom: 1rem;
+  text-shadow: 0 0 20px rgba(255, 182, 193, 0.5);
+  animation: titleGlow 3s infinite alternate;
+}
+
+@keyframes titleGlow {
+  0% {
+    text-shadow: 0 0 10px rgba(255, 182, 193, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 30px rgba(255, 182, 193, 0.8),
+      0 0 40px rgba(139, 0, 0, 0.4);
+  }
+}
+
+.subtitle {
+  font-family: "Cinzel Decorative", serif;
+  font-size: 1.5rem;
+  color: var(--light-gold);
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+}
+
+/* Photo/avatar de couple */
+.couple-photo {
+  width: 180px;
+  height: 180px;
+  margin: 2rem auto;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--deep-red), var(--soft-pink));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  color: white;
+  box-shadow: 0 0 40px rgba(255, 182, 193, 0.4);
+  border: 4px solid var(--gold);
+  position: relative;
+  animation: photoFloat 6s infinite ease-in-out;
+}
+
+@keyframes photoFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(2deg);
+  }
+}
+
+.couple-photo::after {
+  content: "❤️";
+  position: absolute;
+  bottom: -15px;
+  right: -15px;
+  font-size: 2rem;
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+}
+
+/* Message principal */
+.main-message {
+  background: linear-gradient(
+    145deg,
+    rgba(40, 10, 20, 0.8),
+    rgba(30, 5, 15, 0.9)
+  );
+  border-radius: 20px;
+  padding: 3rem;
+  margin: 2rem 0;
+  border: 2px solid rgba(255, 182, 193, 0.2);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.main-message::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 182, 193, 0.05),
+    transparent 70%
+  );
+  z-index: 0;
+}
+
+.message-content {
+  position: relative;
+  z-index: 2;
+}
+
+.message-text {
+  font-family: "Tangerine", cursive;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  color: var(--ivory);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.signature {
+  font-family: "Tangerine", cursive;
+  font-size: 2.5rem;
+  color: var(--soft-pink);
+  text-align: right;
+  margin-top: 2rem;
+  text-shadow: 0 0 10px rgba(255, 182, 193, 0.5);
+}
+
+/* Cartes de souvenirs */
+.memories-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin: 3rem 0;
+}
+
+.memory-card {
+  background: rgba(30, 15, 20, 0.7);
+  border-radius: 15px;
+  padding: 2rem;
+  width: 300px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  transition: all 0.4s ease;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.memory-card.show {
+  animation: cardAppear 0.8s forwards;
+}
+
+@keyframes cardAppear {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.memory-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--soft-pink);
+  box-shadow: 0 10px 25px rgba(255, 182, 193, 0.2);
+}
+
+.memory-icon {
+  font-size: 2.5rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.memory-title {
+  font-family: "Cinzel Decorative", serif;
+  color: var(--light-gold);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.memory-text {
+  color: var(--soft-white);
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Compte à rebours de réunion */
+.countdown {
+  background: linear-gradient(
+    135deg,
+    rgba(139, 0, 0, 0.2),
+    rgba(178, 34, 34, 0.2)
+  );
+  border-radius: 15px;
+  padding: 2rem;
+  margin: 3rem 0;
+  text-align: center;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.countdown-title {
+  font-family: "Cinzel Decorative", serif;
+  color: var(--light-gold);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.countdown-display {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.countdown-unit {
+  background: rgba(20, 5, 10, 0.8);
+  border-radius: 10px;
+  padding: 1rem;
+  min-width: 100px;
+  border: 1px solid rgba(255, 182, 193, 0.2);
+}
+
+.countdown-value {
+  font-family: "Cinzel Decorative", serif;
+  font-size: 2.5rem;
+  color: var(--soft-pink);
+  font-weight: bold;
+}
+
+.countdown-label {
+  color: var(--light-gold);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* Carte cadeau virtuelle */
+.virtual-gift {
+  text-align: center;
+  margin: 3rem 0;
+  cursor: pointer;
+}
+
+.gift-box {
+  font-size: 6rem;
+  color: var(--gold);
+  filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.5));
+  display: inline-block;
+  animation: giftFloat 4s infinite ease-in-out;
+  transition: transform 0.5s;
+}
+
+@keyframes giftFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+.gift-message {
+  font-family: "Sofia", cursive;
+  color: var(--soft-pink);
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+/* Section vidéo/audio */
+.media-section {
+  margin: 3rem 0;
+  text-align: center;
+}
+
+.song-player {
+  background: rgba(30, 15, 20, 0.8);
+  border-radius: 15px;
+  padding: 2rem;
+  max-width: 500px;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 182, 193, 0.2);
+}
+
+.song-title {
+  font-family: "Cinzel Decorative", serif;
+  color: var(--light-gold);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+.messageSpecial {
+  font-family: "Quintessential", serif;
+  font-size: 1.3rem;
+  color: var(--soft-white);
+  margin-bottom: 1rem;
+}
+.play-btn {
+  background: linear-gradient(135deg, var(--deep-red), var(--romantic-red));
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin: 1rem;
+  transition: all 0.3s;
+  box-shadow: 0 5px 15px rgba(139, 0, 0, 0.4);
+}
+
+.play-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(139, 0, 0, 0.6);
+}
+
+/* Message final */
+.final-message {
+  text-align: center;
+  padding: 3rem;
+  margin-top: 3rem;
+  background: linear-gradient(
+    135deg,
+    rgba(139, 0, 0, 0.1),
+    rgba(178, 34, 34, 0.1)
+  );
+  border-radius: 20px;
+  border-top: 2px solid var(--soft-pink);
+}
+
+.final-text {
+  font-family: "Tangerine", cursive;
+  font-size: 3rem;
+  color: var(--ivory);
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.distance-note {
+  font-family: "Charmonman", cursive;
+  color: var(--light-gold);
+  font-size: 1.3rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Pied de page */
+footer {
+  text-align: center;
+  padding: 2rem;
+  margin-top: 3rem;
+  border-top: 1px solid rgba(255, 182, 193, 0.2);
+  color: var(--light-gold);
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .title {
+    font-size: 3.5rem;
+  }
+  .subtitle {
+    font-size: 1.2rem;
+  }
+  .message-text {
+    font-size: 1.8rem;
+  }
+  .couple-photo {
+    width: 150px;
+    height: 150px;
+    font-size: 3rem;
+  }
+  .final-text {
+    font-size: 2rem;
+  }
+  .countdown-unit {
+    min-width: 80px;
+  }
+  .countdown-value {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2.8rem;
+  }
+  .message-text {
+    font-size: 1.1rem;
+  }
+  .container {
+    padding: 1rem;
+  }
+  .main-message {
+    padding: 2rem 1rem;
+  }
+}
