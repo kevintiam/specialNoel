@@ -126,6 +126,21 @@ const setupMusic = () => {
   });
 }
 
+// Musique de fond douce
+const setupBackgroundMusic = () => {
+  const bgAudio = new Audio("https://assets.mixkit.co/music/preview/mixkit-christmas-magic-577.mp3");
+  bgAudio.loop = true;
+  bgAudio.volume = 0.3; // Volume réduit pour l'ambiance
+  
+  // Démarrer la musique automatiquement
+  bgAudio.play().catch(error => {
+    // Si le navigateur bloque l'autoplay, attendre un clic utilisateur
+    document.addEventListener('click', () => {
+      bgAudio.play();
+    }, { once: true });
+  });
+}
+
 // Animation des cartes de souvenirs
 const animateCards = () => {
   const cards = document.querySelectorAll(".memory-card");
@@ -141,6 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
   createHearts();
   setupGift();
   setupMusic();
+  setupBackgroundMusic();
   animateCards();
 
   createRomanticSnow();
