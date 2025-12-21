@@ -107,22 +107,20 @@ document.head.appendChild(style);
 const setupMusic = () => {
   const playBtn = document.getElementById("playBtn");
   let playing = false;
-  const audio = new Audio(
-    "https://assets.mixkit.co/music/preview/mixkit-loving-you-117.mp3"
-  ); // Musique d'exemple
+  const audio = new Audio("./audio.mp3");
 
   playBtn.addEventListener("click", () => {
     if (!playing) {
       audio.play();
       playing = true;
-      this.innerHTML = '<i class="fas fa-pause"></i>';
-      this.style.background =
+      playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+      playBtn.style.background =
         "linear-gradient(135deg, var(--romantic-red), var(--soft-pink))";
     } else {
       audio.pause();
       playing = false;
-      this.innerHTML = '<i class="fas fa-play"></i>';
-      this.style.background =
+      playBtn.innerHTML = '<i class="fas fa-play"></i>';
+      playBtn.style.background =
         "linear-gradient(135deg, var(--deep-red), var(--romantic-red))";
     }
   });
