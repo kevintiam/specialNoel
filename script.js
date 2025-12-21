@@ -139,6 +139,33 @@ const setupBackgroundMusic = () => {
       bgAudio.play();
     }, { once: true });
   });
+
+  // Arrêter la musique quand l'utilisateur quitte la page (mobile)
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      bgAudio.pause();
+    } else {
+      bgAudio.play();
+    }
+  });
+
+  // Arrêter la musique quand la page perd le focus
+  window.addEventListener('blur', () => {
+    bgAudio.pause();
+  });
+
+  // Reprendre la musique quand la page reprend le focus
+  window.addEventListener('focus', () => {
+    if (!document.hidden) {
+      bgAudio.play();
+    }
+  });
+
+  // Arrêter la musique avant de quitter la page
+  window.addEventListener('pagehide', () => {
+    bgAudio.pause();
+    bgAudio.currentTime = 0;
+  });
 }
 
 // Animation des cartes de souvenirs
