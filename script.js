@@ -113,6 +113,7 @@ const setupMusic = () => {
     if (!playing) {
       audio.play();
       playing = true;
+      bgAudio.volume = 2;
       playBtn.innerHTML = '<i class="fas fa-pause"></i>';
       playBtn.style.background =
         "linear-gradient(135deg, var(--romantic-red), var(--soft-pink))";
@@ -130,7 +131,7 @@ const setupMusic = () => {
 const setupBackgroundMusic = () => {
   const bgAudio = new Audio("./background-music.mp3");
   bgAudio.loop = true;
-  bgAudio.volume = 0.1; // Volume réduit pour l'ambiance
+  bgAudio.volume = 0.01; // Volume réduit pour l'ambiance
   
   // Démarrer la musique automatiquement
   bgAudio.play().catch(error => {
